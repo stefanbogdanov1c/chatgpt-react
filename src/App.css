@@ -1,38 +1,120 @@
+:root{
+  --main: #064635;
+  --main-light: #519259;
+  --main-border: #295F3D;
+  --side: #F4EEA9;
+  --side-border: #AA8B56;
+  --shadow: 0 3px 10px rgb(0 0 0 / 0.2);
+  --shadow-light: 0 3px 10px rgb(81 146 89);
+}
+
+::placeholder{
+  color: white;
+  opacity: 0.7;
+}
+
+*{
+  box-sizing: border-box;
+}
+
 .App {
   text-align: center;
-}
-
-.App-logo {
-  height: 40vmin;
-  pointer-events: none;
-}
-
-@media (prefers-reduced-motion: no-preference) {
-  .App-logo {
-    animation: App-logo-spin infinite 20s linear;
-  }
-}
-
-.App-header {
-  background-color: #282c34;
-  min-height: 100vh;
   display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  font-size: calc(10px + 2vmin);
+  flex-direction: row;
+}
+
+.sidemenu{
+  height: 100vh;
+  background-image: linear-gradient(var(--side), var(--side-border));
+  flex-basis: 15%;
+  box-shadow: 5px 0 5px -5px #333;
+}
+
+.sidemenu-button{
+  border: 1px solid var(--side-border);
+  color: var(--side-border);
+  margin: 15px;
+  border-radius: 5px;
+  padding: 5px;
+  font-weight: 800;
+  box-shadow: var(--shadow);
+}
+
+.sidemenu-button:hover{
+  background-color: var(--side-border);
   color: white;
+  transition: 0.25s ease;
 }
 
-.App-link {
-  color: #61dafb;
+.chatbox{
+  height: 100vh;
+  background-image: linear-gradient(var(--main), var(--main-border));
+  flex-basis: 85%;
+  display: flex;
+  position: relative;
 }
 
-@keyframes App-logo-spin {
-  from {
-    transform: rotate(0deg);
-  }
-  to {
-    transform: rotate(360deg);
-  }
+.chat-input-holder{
+  padding: 25px;
+  position:absolute;
+  bottom: 0;
+  left: 0;
+  right: 0;
 }
+
+.chat-input{
+  background-color: var(--main-border);
+  border-radius: 5px;
+  border: 1px solid var(--main-light);
+  outline: none;
+  padding: 20px;
+  font-size: 20px;
+  caret-color: var(--side);
+  box-shadow: var(--shadow-light);
+  width: 100%;
+  color: var(--side);
+}
+
+.x{
+  border: 1px solid var(--main-border);
+  border-radius: 5px;
+  box-shadow: var(--shadow);
+  background-color: var(--side);
+  color: var(--side-border);
+  font-weight: 800;
+  z-index: 5;
+  display: none;
+}
+
+.x:hover{
+  background-color: var(--side-border);
+  color: white;
+  transition: 0.25s ease;
+}
+
+
+@media screen and (max-width: 1000px){
+  .sidemenu{
+    display: none;
+  }
+
+  .chatbox{
+    flex-basis: 100%;
+  }
+
+  .x{
+    display: block;
+    position: absolute;
+    top: 0;
+    width: 100%;
+  }
+  .chat-input{
+    padding: 5px;
+    width: 100%;
+    padding: 15px;
+  }
+
+}
+
+
+
